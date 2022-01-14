@@ -102,8 +102,44 @@ VAR_GLOBAL
 	'}
 	LAMP_C1_PTM_01 : FB_PTM_Pfeiffer;
 	
-	
+// Cluster Source Turbo Pumps, LV17 Configuration
 
+	{attribute 'TcLinkTo' := 	'.i_xAtSpd			:=	TIIB[LAMP_CLSTR1_PNL1_EP01_EP2338-0002]^Channel 1^Input;
+								 .i_xFaultNC		:=	TIIB[LAMP_CLSTR1_PNL1_EP01_EP2338-0002]^Channel 2^Input;
+								 .i_xRemote			:=	TIIB[LAMP_CLSTR1_PNL1_EP01_EP2338-0002]^Channel 3^Input;
+								 .q_RunDO			:=	TIIB[LAMP_CLSTR1_PNL1_EP02_EP2624-0002]^Channel 1^Output;
+								 .q_xReset 			:=	TIIB[LAMP_CLSTR1_PNL1_EP02_EP2624-0002]^Channel 2^Output				 
+	'}
+	{attribute 'pytmc' := '
+		pv: LAMP:CLSTR1:PTM:01
+		io: io
+	'}
+	LAMP_CLSTR1_PTM_01 : FB_PTM_Pfeiffer;	
+
+	{attribute 'TcLinkTo' := 	'.i_xAtSpd			:=	TIIB[LAMP_CLSTR1_PNL2_EP01_EP2338-0002]^Channel 1^Input;
+								 .i_xFaultNC		:=	TIIB[LAMP_CLSTR1_PNL2_EP01_EP2338-0002]^Channel 2^Input;
+								 .i_xRemote			:=	TIIB[LAMP_CLSTR1_PNL2_EP01_EP2338-0002]^Channel 3^Input;
+								 .q_RunDO			:=	TIIB[LAMP_CLSTR1_PNL2_EP02_EP2624-0002]^Channel 1^Output;
+								 .q_xReset 			:=	TIIB[LAMP_CLSTR1_PNL2_EP02_EP2624-0002]^Channel 2^Output				 
+	'}
+	{attribute 'pytmc' := '
+		pv: LAMP:CLSTR1:PTM:02
+		io: io
+	'}
+	LAMP_CLSTR1_PTM_02 : FB_PTM_Pfeiffer;
+	
+	{attribute 'TcLinkTo' := 	'.i_xAtSpd			:=	TIIB[LAMP_CLSTR1_PNL3_EP01_EP2338-0002]^Channel 1^Input;
+								 .i_xFaultNC		:=	TIIB[LAMP_CLSTR1_PNL3_EP01_EP2338-0002]^Channel 2^Input;
+								 .i_xRemote			:=	TIIB[LAMP_CLSTR1_PNL3_EP01_EP2338-0002]^Channel 3^Input;
+								 .q_RunDO			:=	TIIB[LAMP_CLSTR1_PNL3_EP02_EP2624-0002]^Channel 1^Output;
+								 .q_xReset 			:=	TIIB[LAMP_CLSTR1_PNL3_EP02_EP2624-0002]^Channel 2^Output				 
+	'}
+	{attribute 'pytmc' := '
+		pv: LAMP:CLSTR1:PTM:03
+		io: io
+	'}
+	LAMP_CLSTR1_PTM_03 : FB_PTM_Pfeiffer;
+	
 (*KTOF Turbo Pump*)
 (*
 	{attribute 'TcLinkTo' := 	'.i_xAtSpd			:=	TIIB[KTOF_PNL1_EP01_EP2338-0002]^Channel 1^Input;
@@ -307,6 +343,18 @@ VAR_GLOBAL
 	st_Pfeiffer_RBK_LAMP_CATCH_PTM_02 		: ARRAY[1..20] OF ST_PfeifferStatus;
 	fb_PfeifferCom_LAMP_CATCH_PTM_02 		: FB_PFEIFFER_COM;
 
+	// Cluster Source - LV17 configuration
+	st_Pfeiffer_CTRL_LAMP_CLSTR1_PTM_01 		: ARRAY[1..20] OF ST_PfeifferControl;
+	st_Pfeiffer_RBK_LAMP_CLSTR1_PTM_01 			: ARRAY[1..20] OF ST_PfeifferStatus;
+	fb_PfeifferCom_LAMP_CLSTR1_PTM_01 			: FB_PFEIFFER_COM;
+	
+	st_Pfeiffer_CTRL_LAMP_CLSTR1_PTM_02 		: ARRAY[1..20] OF ST_PfeifferControl;
+	st_Pfeiffer_RBK_LAMP_CLSTR1_PTM_02 			: ARRAY[1..20] OF ST_PfeifferStatus;
+	fb_PfeifferCom_LAMP_CLSTR1_PTM_02 			: FB_PFEIFFER_COM;
+	
+	st_Pfeiffer_CTRL_LAMP_CLSTR1_PTM_03 		: ARRAY[1..20] OF ST_PfeifferControl;
+	st_Pfeiffer_RBK_LAMP_CLSTR1_PTM_03 			: ARRAY[1..20] OF ST_PfeifferStatus;
+	fb_PfeifferCom_LAMP_CLSTR1_PTM_03 			: FB_PFEIFFER_COM;
 (*	
 	st_Pfeiffer_CTRL_KTOF_PTM_01 			: ARRAY[1..20] OF ST_PfeifferControl;
 	st_Pfeiffer_RBK_KTOF_PTM_01 			: ARRAY[1..20] OF ST_PfeifferStatus;

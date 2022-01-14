@@ -69,13 +69,16 @@ xOnBeamline := (xEcatBridge_COM_ERROR = FALSE) AND (sHUTCH_PLC_NAME = 'TMO');
 (*TurboPump running Flag with 30 second Turn Off delay.*)
 b_TurboPumpRunningFlag := (
 //	(LAMP_C1_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND //not used for x454
-//	(LAMP_C2_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND //currently does not exist on LAMP
+	(LAMP_C2_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND // wasn't used for x471 & x454
 	(LAMP_C2_PTM_02.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND
 	(LAMP_C2_PTM_03.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND
 	(LAMP_C2_PTM_04.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND
 	(LAMP_CATCH_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND 
 	(LAMP_CATCH_PTM_02.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND
-	(LAMP_ROUGH_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING));
+	(LAMP_ROUGH_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND
+	(LAMP_CLSTR1_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND // Cluster Source LV17
+	(LAMP_CLSTR1_PTM_02.iq_stPtm.eState = E_PumpState.pumpRUNNING) AND // Cluster Source LV17
+	(LAMP_CLSTR1_PTM_03.iq_stPtm.eState = E_PumpState.pumpRUNNING));   // Cluster Source LV17
 //	(KTOF_PTM_01.iq_stPtm.eState = E_PumpState.pumpRUNNING);	
 TurboPumpTOF(IN:= b_TurboPumpRunningFlag, PT := TurboPumpDelayTime);
 b_PumpRunning:= TurboPumpTOF.Q;
@@ -249,6 +252,50 @@ xHighVoltageSafteyLoopEnable:= (LAMP_C2_GCC_01.IG.rPRESS <= rHighVoltageMinPress
 					iq_stRoughRoughValve_NC_second_xOpenLS:=xTMO_ROUGH2_VRC_01_OPEN_LS,
 					x_onBeamline:= xOnBeamline), 
 	iq_stPtm=> );
+
+// Cluster Source - LV17 Configuration
+	LAMP_CLSTR1_PTM_01(
+	i_xExtILKOk:= F_Turbo_NC_NO_Valve_Logic(
+					i_stTurbo:= LAMP_CLSTR1_PTM_01.iq_stPtm, 
+					i_stISG:= LAMP_GJ1_GPI_01.PG, 
+					i_stBSG:= LAMP_ROUGH_GPI_04.PG, 
+					iq_stValve_NO:= LAMP_ROUGH_VRC_02.iq_stValve, 
+					iq_stValve_NC:= LAMP_ROUGH_VRC_03.iq_stValve, 
+					iq_stValve_NC_second:= LAMP_ROUGH_VRC_01.iq_stValve,
+					EcatBridge_Error_Present:= xEcatBridge_COM_ERROR,
+					iq_stRoughRoughValve_NC_xOpnLS:= xTMO_ROUGH1_VRC_01_OPEN_LS,
+					iq_stRoughRoughValve_NC_second_xOpenLS:=xTMO_ROUGH2_VRC_01_OPEN_LS,
+					x_onBeamline:= xOnBeamline), 
+	iq_stPtm=> );
+	
+	LAMP_CLSTR1_PTM_02(
+	i_xExtILKOk:= F_Turbo_NC_NO_Valve_Logic(
+					i_stTurbo:= LAMP_CLSTR1_PTM_02.iq_stPtm, 
+					i_stISG:= LAMP_GJ1_GPI_01.PG, 
+					i_stBSG:= LAMP_ROUGH_GPI_04.PG, 
+					iq_stValve_NO:= LAMP_ROUGH_VRC_02.iq_stValve, 
+					iq_stValve_NC:= LAMP_ROUGH_VRC_03.iq_stValve, 
+					iq_stValve_NC_second:= LAMP_ROUGH_VRC_01.iq_stValve,
+					EcatBridge_Error_Present:= xEcatBridge_COM_ERROR,
+					iq_stRoughRoughValve_NC_xOpnLS:= xTMO_ROUGH2_VRC_01_OPEN_LS,
+					iq_stRoughRoughValve_NC_second_xOpenLS:=xTMO_ROUGH1_VRC_01_OPEN_LS,
+					x_onBeamline:= xOnBeamline), 
+	iq_stPtm=> );
+	
+	LAMP_CLSTR1_PTM_03(
+	i_xExtILKOk:= F_Turbo_NC_NO_Valve_Logic(
+					i_stTurbo:= LAMP_CLSTR1_PTM_03.iq_stPtm, 
+					i_stISG:= LAMP_GJ1_GPI_01.PG, 
+					i_stBSG:= LAMP_ROUGH_GPI_04.PG, 
+					iq_stValve_NO:= LAMP_ROUGH_VRC_02.iq_stValve, 
+					iq_stValve_NC:= LAMP_ROUGH_VRC_03.iq_stValve, 
+					iq_stValve_NC_second:= LAMP_ROUGH_VRC_01.iq_stValve,
+					EcatBridge_Error_Present:= xEcatBridge_COM_ERROR,
+					iq_stRoughRoughValve_NC_xOpnLS:= xTMO_ROUGH1_VRC_01_OPEN_LS,
+					iq_stRoughRoughValve_NC_second_xOpenLS:=xTMO_ROUGH2_VRC_01_OPEN_LS,
+					x_onBeamline:= xOnBeamline), 
+	iq_stPtm=> );
+	
 (*	
 	KTOF_PTM_01(
 	i_xExtILKOk:= F_Turbo_NC_NO_Valve_Logic(
