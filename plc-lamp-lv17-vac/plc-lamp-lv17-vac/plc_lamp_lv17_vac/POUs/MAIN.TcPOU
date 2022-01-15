@@ -263,8 +263,8 @@ xHighVoltageSafteyLoopEnable:= (LAMP_C2_GCC_01.IG.rPRESS <= rHighVoltageMinPress
 					iq_stValve_NC:= LAMP_ROUGH_VRC_03.iq_stValve, 
 					iq_stValve_NC_second:= LAMP_ROUGH_VRC_01.iq_stValve,
 					EcatBridge_Error_Present:= xEcatBridge_COM_ERROR,
-					iq_stRoughRoughValve_NC_xOpnLS:= xTMO_ROUGH1_VRC_01_OPEN_LS,
-					iq_stRoughRoughValve_NC_second_xOpenLS:=xTMO_ROUGH2_VRC_01_OPEN_LS,
+					iq_stRoughRoughValve_NC_xOpnLS:= xTMO_ROUGH2_VRC_01_OPEN_LS,
+					iq_stRoughRoughValve_NC_second_xOpenLS:=xTMO_ROUGH1_VRC_01_OPEN_LS,
 					x_onBeamline:= xOnBeamline), 
 	iq_stPtm=> );
 	
