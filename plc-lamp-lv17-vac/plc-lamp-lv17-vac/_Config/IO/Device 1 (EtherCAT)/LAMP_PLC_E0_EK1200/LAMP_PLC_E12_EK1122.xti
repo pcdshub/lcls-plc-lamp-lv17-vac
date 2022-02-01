@@ -10,7 +10,7 @@
 		<Box File="LAMP_PNL_EP00_EP9128-0021.xti" Id="14">
 			<EtherCAT PortABoxInfo="#x0300000d"/>
 		</Box>
-		<Box File="Power_FOUT_Box (EP9224-0023).xti" Id="76">
+		<Box File="LAMP_PNL1_PWR_FOUT_Box (EP9224-0023).xti" Id="76">
 			<EtherCAT PortABoxInfo="#x0100000d"/>
 		</Box>
 	</Box>

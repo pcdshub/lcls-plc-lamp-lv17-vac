@@ -89,11 +89,41 @@
 			<Name>Term 88 (EP9128-1021)</Name>
 			<ImageId>1000</ImageId>
 			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23a84052" RevisionNo="#x001303fd" PortPhys="4883" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP9128-1021 8x EtherCAT junction - Dev A" Desc="EP9128-1021" PortABoxInfo="#x0200000e"/>
+			<Box File="LAMP_CLSTR1_PNL1_EP01_EP2338-0002.xti" Id="85">
+				<EtherCAT PortABoxInfo="#x0300004a"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL1_EP_02_EP2624-0002.xti" Id="87">
+				<EtherCAT PortABoxInfo="#x01000055"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL1_EP03_EP6002-0002.xti" Id="88">
+				<EtherCAT PortABoxInfo="#x01000057"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL3_EP01_EP2338-0002.xti" Id="92">
+				<EtherCAT PortABoxInfo="#x0100004a"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL3_EP02_EP2624-0002.xti" Id="96">
+				<EtherCAT PortABoxInfo="#x0100005c"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL3_EP03_EP6002-0002.xti" Id="97">
+				<EtherCAT PortABoxInfo="#x01000060"/>
+			</Box>
 		</Box>
 		<Box BoxType="9099" Id="75">
 			<Name>Term 89 (EP9128-2021)</Name>
 			<ImageId>1000</ImageId>
 			<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23a84052" RevisionNo="#x001307e5" PortPhys="4371" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP9128-2021 8x EtherCAT junction - Dev B" Desc="EP9128-2021" PortABoxInfo="#x0200004a"/>
+			<Box File="LAMP_CLSTR1_PNL2_EP01_EP2338-0002.xti" Id="93">
+				<EtherCAT PortABoxInfo="#x0300004b"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL2_EP02_EP2624-0002.xti" Id="94">
+				<EtherCAT PortABoxInfo="#x0100005d"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_PNL2_EP03_EP6002-0002.xti" Id="95">
+				<EtherCAT PortABoxInfo="#x0100005e"/>
+			</Box>
+			<Box File="LAMP_CLSTR1_DCT_EP9224-0023.xti" Id="86">
+				<EtherCAT PortABoxInfo="#x0100004b"/>
+			</Box>
 		</Box>
 	</Box>
 </TcSmItem>
