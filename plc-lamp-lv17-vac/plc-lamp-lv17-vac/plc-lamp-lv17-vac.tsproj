@@ -264,6 +264,13 @@ ETHERCAT BRRIDGE COM STATUS
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_PLC_Interfaces.sHUTCH_PLC_NAME</Name>
+							<Comment>
+								<![CDATA[ I/O Inputs from TMO Beamline]]>
+							</Comment>
+							<Type>STRING(8)</Type>
+						</Var>
+						<Var>
 							<Name>GVL_PLC_Interfaces.xTMO_ROUGH2_VRC_01_OPEN_LS</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -703,16 +710,16 @@ ETHERCAT BRRIDGE COM STATUS
 							<Name>GVL_Devices.LAMP_ROUGH_VRC_02.i_xClsLS</Name>
 							<Type>BOOL</Type>
 						</Var>
-						<Var>
-							<Name>GVL_PLC_Interfaces.sHUTCH_PLC_NAME</Name>
-							<Comment>
-								<![CDATA[ I/O Inputs from TMO Beamline]]>
-							</Comment>
-							<Type>STRING(8)</Type>
-						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>GVL_PLC_Interfaces.sENDSTATION_PLC_NAME</Name>
+							<Comment>
+								<![CDATA[I/O Outputs to TMO Beamline]]>
+							</Comment>
+							<Type>STRING(8)</Type>
+						</Var>
 						<Var>
 							<Name>GVL_PLC_Interfaces.xIP1_ROUGH_VRC_01_OPEN_LS</Name>
 							<Type>BOOL</Type>
@@ -740,6 +747,17 @@ ETHERCAT BRRIDGE COM STATUS
 						<Var>
 							<Name>GVL_PLC_Interfaces.xIP1_HV_SAFETY_ENABLE</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_PLC_Interfaces.xHighVoltageSafteyLoopEnable</Name>
+							<Comment>
+								<![CDATA[When Enables the High voltage Saftey loop is closed and HV can start.]]>
+							</Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_PLC_Interfaces.rIP1_MAIN_rPRESS</Name>
+							<Type>REAL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Devices.LAMP_C2_PTM_01.q_RunDO</Name>
@@ -1036,24 +1054,6 @@ ETHERCAT BRRIDGE COM STATUS
 						<Var>
 							<Name>GVL_Devices.LAMP_ROUGH_VRC_02.q_xCLS_DO</Name>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_PLC_Interfaces.sENDSTATION_PLC_NAME</Name>
-							<Comment>
-								<![CDATA[I/O Outputs to TMO Beamline]]>
-							</Comment>
-							<Type>STRING(8)</Type>
-						</Var>
-						<Var>
-							<Name>GVL_PLC_Interfaces.xHighVoltageSafteyLoopEnable</Name>
-							<Comment>
-								<![CDATA[When Enables the High voltage Saftey loop is closed and HV can start.]]>
-							</Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_PLC_Interfaces.rIP1_MAIN_rPRESS</Name>
-							<Type>REAL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="8">
@@ -2074,8 +2074,20 @@ ETHERCAT BRRIDGE COM STATUS
 				<Link VarA="ComTask Outputs^GVL_COM.stComOut_LAMP_CLSTR1_PTM_02^D[9]" VarB="COM RxPDO-Map Outputs Channel 1^Data Out 9" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^LAMP_PLC_E0_EK1200^LAMP_PLC_E3_EL6692">
+				<Link VarA="PlcTask Inputs^GVL_PLC_Interfaces.sHUTCH_PLC_NAME" VarB="IO Inputs^HUTCH_PLC_NAME" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_PLC_Interfaces.xEcatBridge_TxPDO_state" VarB="SYNC Inputs^TxPDO state" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_PLC_Interfaces.xEcatBridge_WcState" VarB="WcState^WcState" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_PLC_Interfaces.xTMO_ROUGH1_VRC_01_OPEN_LS" VarB="IO Inputs^TMO_ROUGH1_VRC_01_OPEN_LS" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_PLC_Interfaces.xTMO_ROUGH2_VRC_01_OPEN_LS" VarB="IO Inputs^TMO_ROUGH2_VRC_01_OPEN_LS" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.rIP1_MAIN_rPRESS" VarB="IO Outputs^IP1_MAIN_rPRESS" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.sENDSTATION_PLC_NAME" VarB="IO Outputs^ENDSTATION_PLC_NAME" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_HV_SAFETY_ENABLE" VarB="IO Outputs^IP1_HV_SAFETY_ENABLE" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_MAIN_xAT_VAC" VarB="IO Outputs^IP1_MAIN_xAT_VAC" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_MAIN_xPRESS_OK" VarB="IO Outputs^IP1_MAIN_xPRESS_OK" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_ROUGH_VRC_01_OPEN_LS" VarB="IO Outputs^IP1_ROUGH_VRC_01_OPEN_LS" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_ROUGH_VRC_02_OPEN_LS" VarB="IO Outputs^IP1_ROUGH_VRC_02_OPEN_LS" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_ROUGH_VRC_03_OPEN_LS" VarB="IO Outputs^IP1_ROUGH_VRC_03_OPEN_LS" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xIP1_TURBOS_ALL_AtSpd" VarB="IO Outputs^IP1_TURBOS_ALL_AtSpd" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^LAMP_PLC_E0_EK1200^LAMP_PLC_E8_EL2794">
 				<Link VarA="PlcTask Outputs^GVL_PLC_Interfaces.xHighVoltageSafteyLoopEnable" VarB="Channel 1^Output" AutoLink="true"/>
